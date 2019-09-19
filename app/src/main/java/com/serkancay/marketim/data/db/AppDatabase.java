@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
  * Created by S.Serkan Cay on 25.07.2019
  */
 
-@Database(entities = {}, version = 1, exportSchema = false)
+//@Database(entities = {}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
 
     private static AppDatabase sInstance;
