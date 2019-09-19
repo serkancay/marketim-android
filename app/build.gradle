@@ -29,4 +29,7 @@ dependencies {
     // Database
     implementation 'android.arch.persistence.room:runtime:1.1.1'
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
+
+    // Networking
+    implementation "com.amitshekhar.android:rx2-android-networking:1.0.2"
 }
