@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Marketim</string>
+
+    <!-- Login UI -->
+    <string name="ui_login_username_edittext">Kullanıcı Adı</string>
+    <string name="ui_login_password_edittext">Parola</string>
+    <string name="ui_login_login_button">GİRİŞ YAP</string>
+    <string name="ui_login_remember_me_switch_text">Beni hatırla</string>
 </resources>

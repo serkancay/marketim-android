@@ -17,7 +17,8 @@ public class SplashPresenter {
     }
 
     public void onResume() {
-        navigateToHomeWithDelay();
+        //navigateToHomeWithDelay();
+        navigateToLoginWithDelay();
     }
 
     public void onDestroy() {
@@ -29,6 +30,15 @@ public class SplashPresenter {
             @Override
             public void run() {
                 mView.navigateToHome();
+            }
+        }, SPLASH_DELAY_TIME);
+    }
+
+    public void navigateToLoginWithDelay() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mView.navigateToLogin();
             }
         }, SPLASH_DELAY_TIME);
     }
