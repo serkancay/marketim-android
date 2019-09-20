@@ -13,6 +13,9 @@ android {
         debug {
             buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
             buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
+            buildConfigField("String", "ALIAS", "\"doviz20192\"")
+            buildConfigField("String", "KEY_STORE_FILE_NAME", "\"marketim222019\"")
+            buildConfigField("String", "KEY_STORE_PASSWORD", "\"2019marketim22\"")
             debuggable true
         }
         release {
@@ -20,6 +23,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
             buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
+            buildConfigField("String", "ALIAS", "\"doviz20192\"")
+            buildConfigField("String", "KEY_STORE_FILE_NAME", "\"marketim222019\"")
+            buildConfigField("String", "KEY_STORE_PASSWORD", "\"2019marketim22\"")
         }
     }
     compileOptions {
