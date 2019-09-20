@@ -6,4 +6,10 @@ package com.serkancay.marketim.ui.login;
 
 public interface LoginView {
 
+    void showUsernameValidateError(int message);
+
+    void showPasswordValidateError(int message);
+
+    void clearValidateErrors();
+
 }
