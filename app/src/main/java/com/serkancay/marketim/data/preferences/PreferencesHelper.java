@@ -54,8 +54,37 @@ public class PreferencesHelper {
         return settings.getBoolean(key, defValue);
     }
 
+    public void setRememberMe(boolean isRememberMeOn) {
+        setSharedPreferenceBoolean(Keys.REMEMBER_ME, isRememberMeOn);
+    }
+
+    public boolean isRememberMeOn() {
+        return getSharedPreferenceBoolean(Keys.REMEMBER_ME, false);
+    }
+
+    public void setUsername(String username) {
+        setSharedPreferenceString(Keys.USERNAME, username);
+    }
+
+    public String getUsername() {
+        return getSharedPreferenceString(Keys.USERNAME, "");
+    }
+
+    public void setPassword(String password) {
+        setSharedPreferenceString(Keys.PASSWORD, password);
+    }
+
+    public String getPassword() {
+        return getSharedPreferenceString(Keys.PASSWORD, "");
+    }
+
     public class Keys {
 
+        public static final String REMEMBER_ME = "REMEMBER_ME";
+
+        public static final String USERNAME = "USERNAME";
+
+        public static final String PASSWORD = "PASSWORD";
     }
 
 }

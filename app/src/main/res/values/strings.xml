@@ -8,4 +8,5 @@
     <string name="ui_login_remember_me_switch_text">Beni hatırla</string>
     <string name="ui_login_username_edittext_validate">Kullanıcı adı giriniz</string>
     <string name="ui_login_password_edittext_validate">Parola giriniz</string>
+    <string name="ui_login_failed_error_text">Kullanıcı adı ve parola eşleşmiyor</string>
 </resources>

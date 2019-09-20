@@ -3,11 +3,15 @@ package com.serkancay.marketim.ui.login;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import butterknife.BindView;
 import butterknife.OnClick;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.serkancay.marketim.MainActivity;
 import com.serkancay.marketim.R;
 import com.serkancay.marketim.ui.base.BaseActivity;
 
@@ -20,6 +24,9 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public static void start(Context context) {
         context.startActivity(new Intent(context, LoginActivity.class));
     }
+
+    @BindView(R.id.llRoot)
+    LinearLayout llRoot;
 
     @BindView(R.id.tilUsername)
     TextInputLayout tilUsername;
@@ -45,7 +52,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onCreated() {
-        mPresenter = new LoginPresenter(this);
+        mPresenter = new LoginPresenter(this, getApp().getPreferencesHelper());
     }
 
     @Override
@@ -80,5 +87,18 @@ public class LoginActivity extends BaseActivity implements LoginView {
     public void clearValidateErrors() {
         tilUsername.setError("");
         tilPassword.setError("");
+    }
+
+    @Override
+    public void showLoginFailedError(final int message) {
+        Snackbar.make(llRoot, getString(message), BaseTransientBottomBar.LENGTH_SHORT)
+                .setBackgroundTint(getResources().getColor(R.color.snackbar_error_bg))
+                .setTextColor(getResources().getColor(R.color.dark_text_color)).show();
+    }
+
+    @Override
+    public void navigateToHome() {
+        MainActivity.start(context);
+        finish();
     }
 }

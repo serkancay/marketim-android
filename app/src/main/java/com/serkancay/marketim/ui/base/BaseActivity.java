@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
+import com.serkancay.marketim.App;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019
@@ -92,5 +93,9 @@ public class BaseActivity extends AppCompatActivity {
 
     public void clearBackStack() {
         getSupportFragmentManager().popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+    }
+
+    public App getApp() {
+        return (App) activity.getApplication();
     }
 }

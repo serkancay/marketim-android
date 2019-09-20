@@ -1,7 +1,9 @@
 package com.serkancay.marketim.ui.login;
 
 import android.text.TextUtils;
+import com.serkancay.marketim.BuildConfig;
 import com.serkancay.marketim.R;
+import com.serkancay.marketim.data.preferences.PreferencesHelper;
 
 /**
  * Created by S.Serkan Cay on 20.09.2019
@@ -11,14 +13,17 @@ public class LoginPresenter {
 
     private LoginView mView;
 
+    private PreferencesHelper mPreferencesHelper;
+
     private String mUsername;
 
     private String mPassword;
 
     private boolean mIsRememberMeOn;
 
-    public LoginPresenter(LoginView view) {
+    public LoginPresenter(LoginView view, PreferencesHelper preferencesHelper) {
         mView = view;
+        mPreferencesHelper = preferencesHelper;
     }
 
     public void onDestroy() {
@@ -31,7 +36,17 @@ public class LoginPresenter {
         mIsRememberMeOn = isRememberMeOn;
         mView.clearValidateErrors();
         if (validate()) {
-            // TODO login in to app
+            if (BuildConfig.DEFAULT_USERNAME.equals(mUsername) && BuildConfig.DEFAULT_PASSWORD.equals(mPassword)) {
+                mPreferencesHelper.setRememberMe(mIsRememberMeOn);
+                if (mIsRememberMeOn) {
+                    // TODO encrypt credentials
+                    mPreferencesHelper.setUsername(mUsername);
+                    mPreferencesHelper.setPassword(mPassword);
+                }
+                mView.navigateToHome();
+            } else {
+                mView.showLoginFailedError(R.string.ui_login_failed_error_text);
+            }
         }
     }
 

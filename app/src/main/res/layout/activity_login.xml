@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="false"
@@ -33,7 +34,9 @@
             android:id="@+id/tietUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/ui_login_username_edittext" />
+            android:hint="@string/ui_login_username_edittext"
+            android:maxLines="1"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,7 +52,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/ui_login_password_edittext"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

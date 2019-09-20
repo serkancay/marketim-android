@@ -12,4 +12,8 @@ public interface LoginView {
 
     void clearValidateErrors();
 
+    void showLoginFailedError(int message);
+
+    void navigateToHome();
+
 }
