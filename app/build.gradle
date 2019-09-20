@@ -10,9 +10,16 @@ android {
         versionName "1.0"
     }
     buildTypes {
+        debug {
+            buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
+            buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
+            debuggable true
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
+            buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
         }
     }
     compileOptions {
