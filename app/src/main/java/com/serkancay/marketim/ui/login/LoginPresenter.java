@@ -38,7 +38,6 @@ public class LoginPresenter<V extends LoginView> extends BasePresenter<V> implem
             if (BuildConfig.DEFAULT_USERNAME.equals(mUsername) && BuildConfig.DEFAULT_PASSWORD.equals(mPassword)) {
                 getDataManager().setRememberMe(mIsRememberMeOn);
                 if (mIsRememberMeOn) {
-                    // TODO encrypt credentials
                     getDataManager().setUsername(mUsername);
                     getDataManager().setPassword(mPassword);
                 }

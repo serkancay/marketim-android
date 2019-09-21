@@ -1,6 +1,7 @@
 package com.serkancay.marketim.ui.splash;
 
 import android.os.Handler;
+import com.serkancay.marketim.BuildConfig;
 import com.serkancay.marketim.data.IDataManager;
 import com.serkancay.marketim.ui.base.BasePresenter;
 import javax.inject.Inject;
@@ -21,7 +22,17 @@ public class SplashPresenter<V extends SplashView> extends BasePresenter<V> impl
     @Override
     public void onAttach(final V view) {
         super.onAttach(view);
-        navigateToLoginWithDelay();
+        // If user selected remember me, checking given username and password
+        if (getDataManager().isRememberMeOn()) {
+            if (BuildConfig.DEFAULT_USERNAME.equals(getDataManager().getUsername()) && BuildConfig.DEFAULT_PASSWORD
+                    .equals(getDataManager().getPassword())) {
+                navigateToHomeWithDelay();
+            } else {
+                navigateToLoginWithDelay();
+            }
+        } else {
+            navigateToLoginWithDelay();
+        }
     }
 
     public void navigateToHomeWithDelay() {
