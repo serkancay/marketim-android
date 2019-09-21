@@ -3,6 +3,7 @@ package com.serkancay.marketim.ui.splash;
 import com.serkancay.marketim.MainActivity;
 import com.serkancay.marketim.ui.base.BaseActivity;
 import com.serkancay.marketim.ui.login.LoginActivity;
+import javax.inject.Inject;
 
 /**
  * Created by S.Serkan Cay on 19.09.2019
@@ -10,21 +11,18 @@ import com.serkancay.marketim.ui.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity implements SplashView {
 
-    private SplashPresenter mPresenter;
+    @Inject
+    public SplashPresenter<SplashView> mPresenter;
 
     @Override
     public void onCreated() {
-        mPresenter = new SplashPresenter(this);
-    }
-
-    @Override
-    public void onResumed() {
-        mPresenter.onResume();
+        getActivityComponent().inject(this);
+        mPresenter.onAttach(this);
     }
 
     @Override
     public void onDestroyed() {
-        mPresenter.onDestroy();
+        mPresenter.onDetach();
     }
 
     @Override

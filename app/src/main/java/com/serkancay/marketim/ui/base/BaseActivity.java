@@ -10,6 +10,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import butterknife.ButterKnife;
 import com.serkancay.marketim.App;
+import com.serkancay.marketim.di.component.ActivityComponent;
+import com.serkancay.marketim.di.component.DaggerActivityComponent;
+import com.serkancay.marketim.di.module.ActivityModule;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019
@@ -20,6 +23,8 @@ public class BaseActivity extends AppCompatActivity {
     public Context context;
 
     public BaseActivity activity;
+
+    private ActivityComponent mActivityComponent;
 
     public int getLayoutId() {
         return -1;
@@ -43,6 +48,10 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .applicationComponent(((App) getApplication()).getComponent())
+                .build();
         context = this;
         activity = this;
 
@@ -98,4 +107,9 @@ public class BaseActivity extends AppCompatActivity {
     public App getApp() {
         return (App) activity.getApplication();
     }
+
+    public ActivityComponent getActivityComponent() {
+        return mActivityComponent;
+    }
+
 }
