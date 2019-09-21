@@ -3,6 +3,7 @@ package com.serkancay.marketim.data;
 import android.content.Context;
 import com.serkancay.marketim.data.preferences.IPreferencesHelper;
 import com.serkancay.marketim.di.ApplicationContext;
+import com.serkancay.marketim.util.keystore.CryptorUtil;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -11,29 +12,50 @@ import javax.inject.Singleton;
  */
 
 @Singleton
-public class DataManager implements IDataManager{
+public class DataManager implements IDataManager {
+
+    private final Context mContext;
 
     private final IPreferencesHelper mPreferencesHelper;
 
     @Inject
     public DataManager(@ApplicationContext Context context, IPreferencesHelper preferencesHelper) {
+        mContext = context;
         mPreferencesHelper = preferencesHelper;
     }
 
+    /**
+     * Encrypts username and saves
+     */
     public void setUsername(String username) {
-        mPreferencesHelper.setUsername(username);
+        String encryptedUsername = CryptorUtil.encrypt(mContext, username);
+        mPreferencesHelper.setUsername(encryptedUsername);
     }
 
+    /**
+     * Returns decrypted username
+     */
     public String getUsername() {
-        return mPreferencesHelper.getUsername();
+        String username = mPreferencesHelper.getUsername();
+        String encryptedUsername = CryptorUtil.decrypt(mContext, username);
+        return encryptedUsername;
     }
 
+    /**
+     * Encrypts password and saves
+     */
     public void setPassword(String password) {
-        mPreferencesHelper.setPassword(password);
+        String encryptedPassword = CryptorUtil.encrypt(mContext, password);
+        mPreferencesHelper.setPassword(encryptedPassword);
     }
 
+    /**
+     * Returns decrypted password
+     */
     public String getPassword() {
-        return mPreferencesHelper.getPassword();
+        String password = mPreferencesHelper.getPassword();
+        String encryptedPassword = CryptorUtil.decrypt(mContext, password);
+        return encryptedPassword;
     }
 
     public void setRememberMe(boolean isRememberMeOn) {
