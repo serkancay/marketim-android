@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.serkancay.marketim.MainActivity;
 import com.serkancay.marketim.R;
 import com.serkancay.marketim.ui.base.BaseActivity;
+import javax.inject.Inject;
 
 /**
  * Created by S.Serkan Cay on 19.09.2019
@@ -43,7 +44,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @BindView(R.id.switchRememberMe)
     Switch switchRememberMe;
 
-    private LoginPresenter mPresenter;
+    @Inject
+    public LoginPresenter<LoginView> mPresenter;
 
     @Override
     public int getLayoutId() {
@@ -52,12 +54,13 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void onCreated() {
-        mPresenter = new LoginPresenter(this, getApp().getPreferencesHelper());
+        getActivityComponent().inject(this);
+        mPresenter.onAttach(this);
     }
 
     @Override
     public void onDestroyed() {
-        mPresenter.onDestroy();
+        mPresenter.onDetach();
     }
 
     @OnClick({R.id.bLogin})

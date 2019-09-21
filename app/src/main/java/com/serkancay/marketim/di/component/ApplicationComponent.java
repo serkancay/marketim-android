@@ -3,6 +3,7 @@ package com.serkancay.marketim.di.component;
 import android.app.Application;
 import android.content.Context;
 import com.serkancay.marketim.App;
+import com.serkancay.marketim.data.IDataManager;
 import com.serkancay.marketim.di.ApplicationContext;
 import com.serkancay.marketim.di.module.ApplicationModule;
 import dagger.Component;
@@ -22,5 +23,7 @@ public interface ApplicationComponent {
     public Context context();
 
     public Application application();
+
+    public IDataManager getDataManager();
 
 }

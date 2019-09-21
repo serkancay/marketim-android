@@ -3,17 +3,15 @@ package com.serkancay.marketim.ui.login;
 import android.text.TextUtils;
 import com.serkancay.marketim.BuildConfig;
 import com.serkancay.marketim.R;
-import com.serkancay.marketim.data.preferences.PreferencesHelper;
+import com.serkancay.marketim.data.IDataManager;
+import com.serkancay.marketim.ui.base.BasePresenter;
+import javax.inject.Inject;
 
 /**
  * Created by S.Serkan Cay on 20.09.2019
  */
 
-public class LoginPresenter {
-
-    private LoginView mView;
-
-    private PreferencesHelper mPreferencesHelper;
+public class LoginPresenter<V extends LoginView> extends BasePresenter<V> implements ILoginPresenter {
 
     private String mUsername;
 
@@ -21,31 +19,32 @@ public class LoginPresenter {
 
     private boolean mIsRememberMeOn;
 
-    public LoginPresenter(LoginView view, PreferencesHelper preferencesHelper) {
-        mView = view;
-        mPreferencesHelper = preferencesHelper;
+    @Inject
+    public LoginPresenter(IDataManager dataManager) {
+        super(dataManager);
     }
 
-    public void onDestroy() {
-        mView = null;
+    @Override
+    public void onAttach(final V view) {
+        super.onAttach(view);
     }
 
     public void onLoginButtonClicked(String username, String password, boolean isRememberMeOn) {
         mUsername = username;
         mPassword = password;
         mIsRememberMeOn = isRememberMeOn;
-        mView.clearValidateErrors();
+        getView().clearValidateErrors();
         if (validate()) {
             if (BuildConfig.DEFAULT_USERNAME.equals(mUsername) && BuildConfig.DEFAULT_PASSWORD.equals(mPassword)) {
-                mPreferencesHelper.setRememberMe(mIsRememberMeOn);
+                getDataManager().setRememberMe(mIsRememberMeOn);
                 if (mIsRememberMeOn) {
                     // TODO encrypt credentials
-                    mPreferencesHelper.setUsername(mUsername);
-                    mPreferencesHelper.setPassword(mPassword);
+                    getDataManager().setUsername(mUsername);
+                    getDataManager().setPassword(mPassword);
                 }
-                mView.navigateToHome();
+                getView().navigateToHome();
             } else {
-                mView.showLoginFailedError(R.string.ui_login_failed_error_text);
+                getView().showLoginFailedError(R.string.ui_login_failed_error_text);
             }
         }
     }
@@ -53,13 +52,13 @@ public class LoginPresenter {
     // Validate user inputs
     private boolean validate() {
         if (TextUtils.isEmpty(mUsername)) {
-            if (mView != null) {
-                mView.showUsernameValidateError(R.string.ui_login_username_edittext_validate);
+            if (getView() != null) {
+                getView().showUsernameValidateError(R.string.ui_login_username_edittext_validate);
             }
             return false;
         } else if (TextUtils.isEmpty(mPassword)) {
-            if (mView != null) {
-                mView.showPasswordValidateError(R.string.ui_login_password_edittext_validate);
+            if (getView() != null) {
+                getView().showPasswordValidateError(R.string.ui_login_password_edittext_validate);
             }
             return false;
         }
