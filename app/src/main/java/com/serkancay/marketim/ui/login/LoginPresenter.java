@@ -5,6 +5,7 @@ import com.serkancay.marketim.BuildConfig;
 import com.serkancay.marketim.R;
 import com.serkancay.marketim.data.IDataManager;
 import com.serkancay.marketim.ui.base.BasePresenter;
+import io.reactivex.disposables.CompositeDisposable;
 import javax.inject.Inject;
 
 /**
@@ -20,8 +21,8 @@ public class LoginPresenter<V extends LoginView> extends BasePresenter<V> implem
     private boolean mIsRememberMeOn;
 
     @Inject
-    public LoginPresenter(IDataManager dataManager) {
-        super(dataManager);
+    public LoginPresenter(IDataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 
     @Override

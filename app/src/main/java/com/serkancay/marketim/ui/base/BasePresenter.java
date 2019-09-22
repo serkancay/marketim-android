@@ -1,6 +1,7 @@
 package com.serkancay.marketim.ui.base;
 
 import com.serkancay.marketim.data.IDataManager;
+import io.reactivex.disposables.CompositeDisposable;
 import javax.inject.Inject;
 
 /**
@@ -13,9 +14,12 @@ public class BasePresenter<V extends View> implements Presenter<V> {
 
     private final IDataManager mDataManager;
 
+    private final CompositeDisposable mCompositeDisposable;
+
     @Inject
-    public BasePresenter(IDataManager dataManager) {
+    public BasePresenter(IDataManager dataManager, CompositeDisposable compositeDisposable) {
         mDataManager = dataManager;
+        mCompositeDisposable = compositeDisposable;
     }
 
     @Override
@@ -25,11 +29,16 @@ public class BasePresenter<V extends View> implements Presenter<V> {
 
     @Override
     public void onDetach() {
+        mCompositeDisposable.dispose();
         mView = null;
     }
 
     public V getView() {
         return mView;
+    }
+
+    public CompositeDisposable getCompositeDisposable() {
+        return mCompositeDisposable;
     }
 
     public IDataManager getDataManager() {

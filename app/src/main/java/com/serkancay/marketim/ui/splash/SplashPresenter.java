@@ -4,6 +4,7 @@ import android.os.Handler;
 import com.serkancay.marketim.BuildConfig;
 import com.serkancay.marketim.data.IDataManager;
 import com.serkancay.marketim.ui.base.BasePresenter;
+import io.reactivex.disposables.CompositeDisposable;
 import javax.inject.Inject;
 
 /**
@@ -15,8 +16,8 @@ public class SplashPresenter<V extends SplashView> extends BasePresenter<V> impl
     private static final int SPLASH_DELAY_TIME = 2000;
 
     @Inject
-    public SplashPresenter(IDataManager dataManager) {
-        super(dataManager);
+    public SplashPresenter(IDataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 
     @Override
