@@ -41,4 +41,17 @@ public class OrdersPresenter<V extends OrdersView> extends BasePresenter<V> impl
             }
         }));
     }
+
+    @Override
+    public void onLogoutButtonClick() {
+        getView().showConfirmLogoutDialog();
+    }
+
+    @Override
+    public void doLogout() {
+        getDataManager().setPassword("");
+        getDataManager().setUsername("");
+        getDataManager().setRememberMe(false);
+        getView().navigateToLoginScreen();
+    }
 }

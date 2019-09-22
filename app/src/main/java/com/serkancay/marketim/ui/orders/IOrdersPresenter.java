@@ -9,4 +9,8 @@ import com.serkancay.marketim.di.PerActivity;
 @PerActivity
 public interface IOrdersPresenter<V extends OrdersView> {
 
+    void onLogoutButtonClick();
+
+    void doLogout();
+
 }

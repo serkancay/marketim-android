@@ -12,4 +12,9 @@
 
     <!-- Orders UI -->
     <string name="ui_orders_error_text">Siparişler yüklenemedi</string>
+    <string name="ui_orders_logout_button_text">ÇIKIŞ YAP</string>
+    <string name="ui_orders_logout_dialog_title">Çıkış Yap</string>
+    <string name="ui_orders_logout_dialog_message">Uygulamadan çıkış yapmak istediğinize emin misiniz?</string>
+    <string name="ui_orders_logout_dialog_positive_button_text">EVET</string>
+    <string name="ui_orders_logout_dialog_negative_button_text">HAYIR</string>
 </resources>

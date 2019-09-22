@@ -18,4 +18,8 @@ public interface OrdersView extends View {
 
     void updateOrders(List<Order> orders);
 
+    void showConfirmLogoutDialog();
+
+    void navigateToLoginScreen();
+
 }
