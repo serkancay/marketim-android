@@ -9,6 +9,16 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    signingConfigs {
+        release {
+            storeFile file("marketim.keystore")
+            storePassword 'marketim123'
+            keyAlias 'marketim'
+            keyPassword 'marketim123'
+        }
+    }
+
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"http://kariyertechchallenge.mockable.io/\"")
@@ -28,6 +38,7 @@ android {
             buildConfigField("String", "ALIAS", "\"marketim20192\"")
             buildConfigField("String", "KEY_STORE_FILE_NAME", "\"marketim222019\"")
             buildConfigField("String", "KEY_STORE_PASSWORD", "\"2019marketim22\"")
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
