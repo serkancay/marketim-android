@@ -1,6 +1,6 @@
 package com.serkancay.marketim.ui.splash;
 
-import com.serkancay.marketim.MainActivity;
+import com.serkancay.marketim.ui.orders.OrdersActivity;
 import com.serkancay.marketim.ui.base.BaseActivity;
 import com.serkancay.marketim.ui.login.LoginActivity;
 import javax.inject.Inject;
@@ -27,7 +27,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     public void navigateToHome() {
-        MainActivity.start(context);
+        OrdersActivity.start(context);
         finish();
     }
 

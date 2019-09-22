@@ -11,7 +11,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.serkancay.marketim.MainActivity;
+import com.serkancay.marketim.ui.orders.OrdersActivity;
 import com.serkancay.marketim.R;
 import com.serkancay.marketim.ui.base.BaseActivity;
 import javax.inject.Inject;
@@ -101,7 +101,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     @Override
     public void navigateToHome() {
-        MainActivity.start(context);
+        OrdersActivity.start(context);
         finish();
     }
 }
