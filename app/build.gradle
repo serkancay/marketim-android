@@ -30,7 +30,9 @@ android {
             debuggable true
         }
         release {
-            minifyEnabled false
+            shrinkResources true
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"http://kariyertechchallenge.mockable.io/\"")
             buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
