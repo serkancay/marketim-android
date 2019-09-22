@@ -11,5 +11,5 @@
 <img src="https://github.com/serkancay/marketim-android/blob/develop/device-2019-09-22-213139.png" width="200"><img src="https://github.com/serkancay/marketim-android/blob/develop/device-2019-09-22-213232.png" width="200">
 
 ## v1.0
-[APK](marketim-android/blob/v1.0/app/release/app-release.apk)
+[APK](https://github.com/serkancay/marketim-android/blob/v1.0/app/release/app-release.apk)
 
