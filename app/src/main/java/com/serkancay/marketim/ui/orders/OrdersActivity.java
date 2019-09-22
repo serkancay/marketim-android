@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
@@ -36,6 +37,9 @@ public class OrdersActivity extends BaseActivity implements OrdersView {
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
     @Inject
     public OrdersPresenter<OrdersView> mPresenter;
 
@@ -52,6 +56,7 @@ public class OrdersActivity extends BaseActivity implements OrdersView {
 
     @Override
     public void onCreated() {
+        setSupportActionBar(toolbar);
         getActivityComponent().inject(this);
         mLayoutManager.setOrientation(RecyclerView.VERTICAL);
         rvOrders.setLayoutManager(mLayoutManager);
