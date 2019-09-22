@@ -37,6 +37,8 @@ public class Order {
     @SerializedName("productDetail")
     private ProductDetail mProductDetail;
 
+    private transient boolean mIsExpanded = false;
+
     public String getDate() {
         return mDate;
     }
@@ -63,5 +65,13 @@ public class Order {
 
     public ProductDetail getProductDetail() {
         return mProductDetail;
+    }
+
+    public boolean isExpanded() {
+        return mIsExpanded;
+    }
+
+    public void setExpanded(final boolean expanded) {
+        mIsExpanded = expanded;
     }
 }

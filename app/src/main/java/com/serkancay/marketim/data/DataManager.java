@@ -2,11 +2,12 @@ package com.serkancay.marketim.data;
 
 import android.content.Context;
 import com.serkancay.marketim.data.network.IApiHelper;
-import com.serkancay.marketim.data.network.model.response.OrdersResponse;
+import com.serkancay.marketim.data.network.model.Order;
 import com.serkancay.marketim.data.preferences.IPreferencesHelper;
 import com.serkancay.marketim.di.ApplicationContext;
 import com.serkancay.marketim.util.keystore.CryptorUtil;
 import io.reactivex.Single;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -74,7 +75,7 @@ public class DataManager implements IDataManager {
     }
 
     @Override
-    public Single<OrdersResponse> getOrdersApiCall() {
+    public Single<List<Order>> getOrdersApiCall() {
         return mApiHelper.getOrdersApiCall();
     }
 }

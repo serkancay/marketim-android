@@ -9,4 +9,7 @@
     <string name="ui_login_username_edittext_validate">Kullanıcı adı giriniz</string>
     <string name="ui_login_password_edittext_validate">Parola giriniz</string>
     <string name="ui_login_failed_error_text">Kullanıcı adı ve parola eşleşmiyor</string>
+
+    <!-- Orders UI -->
+    <string name="ui_orders_error_text">Siparişler yüklenemedi</string>
 </resources>

@@ -14,6 +14,8 @@ public interface OrdersView extends View {
 
     void hideLoading();
 
+    void showError();
+
     void updateOrders(List<Order> orders);
 
 }
