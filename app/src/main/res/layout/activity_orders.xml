@@ -17,7 +17,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvOrders"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0px"
         android:layout_weight="1" />
 
     <View
@@ -25,13 +25,33 @@
         android:layout_height="1px"
         android:background="@android:color/darker_gray" />
 
-    <Button
-        android:id="@+id/bLogout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_padding"
-        android:background="@drawable/selector_red_button"
-        android:text="@string/ui_orders_logout_button_text"
-        android:textColor="@color/dark_text_color" />
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/medium_padding">
+
+        <Button
+            android:id="@+id/bMyOrders"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/selector_blue_button"
+            android:text="@string/ui_orders_my_order_button_text"
+            android:textColor="@color/dark_text_color" />
+
+        <Button
+            android:id="@+id/bLogout"
+            android:layout_width="0px"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/medium_padding"
+            android:layout_weight="1"
+            android:background="@drawable/selector_red_button"
+            android:text="@string/ui_orders_logout_button_text"
+            android:textColor="@color/dark_text_color" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

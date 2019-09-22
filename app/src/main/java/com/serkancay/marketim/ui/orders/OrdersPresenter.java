@@ -25,6 +25,28 @@ public class OrdersPresenter<V extends OrdersView> extends BasePresenter<V> impl
     @Override
     public void onAttach(final V view) {
         super.onAttach(view);
+        getOrdersData();
+    }
+
+    @Override
+    public void onLogoutButtonClick() {
+        getView().showConfirmLogoutDialog();
+    }
+
+    @Override
+    public void doLogout() {
+        getDataManager().setPassword("");
+        getDataManager().setUsername("");
+        getDataManager().setRememberMe(false);
+        getView().navigateToLoginScreen();
+    }
+
+    @Override
+    public void onMyOrdersButtonClick() {
+        getOrdersData();
+    }
+
+    private void getOrdersData() {
         getView().showLoading();
         getCompositeDisposable().add(getDataManager().getOrdersApiCall().subscribeOn(Schedulers.io()).observeOn(
                 AndroidSchedulers.mainThread()).subscribe(new Consumer<List<Order>>() {
@@ -40,18 +62,5 @@ public class OrdersPresenter<V extends OrdersView> extends BasePresenter<V> impl
                 getView().showError();
             }
         }));
-    }
-
-    @Override
-    public void onLogoutButtonClick() {
-        getView().showConfirmLogoutDialog();
-    }
-
-    @Override
-    public void doLogout() {
-        getDataManager().setPassword("");
-        getDataManager().setUsername("");
-        getDataManager().setRememberMe(false);
-        getView().navigateToLoginScreen();
     }
 }

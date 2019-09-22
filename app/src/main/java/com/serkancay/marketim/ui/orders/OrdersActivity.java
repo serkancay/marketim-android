@@ -64,23 +64,23 @@ public class OrdersActivity extends BaseActivity implements OrdersView {
         mPresenter.onDetach();
     }
 
-    @OnClick({R.id.bLogout})
+    @OnClick({R.id.bLogout, R.id.bMyOrders})
     public void onViewClicked(View view) {
         if (view.getId() == R.id.bLogout) {
             mPresenter.onLogoutButtonClick();
+        } else if (view.getId() == R.id.bMyOrders) {
+            mPresenter.onMyOrdersButtonClick();
         }
     }
 
     @Override
     public void showLoading() {
         progressBar.setVisibility(View.VISIBLE);
-        rvOrders.setVisibility(View.GONE);
     }
 
     @Override
     public void hideLoading() {
         progressBar.setVisibility(View.GONE);
-        rvOrders.setVisibility(View.VISIBLE);
     }
 
     @Override

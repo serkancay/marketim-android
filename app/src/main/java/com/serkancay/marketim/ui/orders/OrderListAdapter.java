@@ -97,6 +97,7 @@ public class OrderListAdapter extends Adapter<OrderHolder> {
         holder.tvOrderDetail.setText(order.getProductDetail().getOrderDetail());
         holder.tvSummaryPrice
                 .setText(NumberFormat.getCurrencyInstance().format(order.getProductDetail().getSummaryPrice()));
+        // String value check. Have not any state value from the api.
         if (order.getProductState().equals("Yolda")) {
             holder.ivProductState.setColorFilter(Color.parseColor("#27ae60"));
             holder.tvProductState.setTextColor(Color.parseColor("#27ae60"));
@@ -122,7 +123,10 @@ public class OrderListAdapter extends Adapter<OrderHolder> {
     }
 
     public void addItems(List<Order> orders) {
-        mOrders.addAll(orders);
+        if (mOrders != null) {
+            mOrders.clear();
+            mOrders.addAll(orders);
+        }
         notifyDataSetChanged();
     }
 }

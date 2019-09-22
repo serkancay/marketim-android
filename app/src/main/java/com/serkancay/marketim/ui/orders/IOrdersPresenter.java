@@ -13,4 +13,6 @@ public interface IOrdersPresenter<V extends OrdersView> {
 
     void doLogout();
 
+    void onMyOrdersButtonClick();
+
 }
