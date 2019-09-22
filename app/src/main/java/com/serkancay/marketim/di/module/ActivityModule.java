@@ -7,6 +7,9 @@ import com.serkancay.marketim.di.PerActivity;
 import com.serkancay.marketim.ui.login.ILoginPresenter;
 import com.serkancay.marketim.ui.login.LoginPresenter;
 import com.serkancay.marketim.ui.login.LoginView;
+import com.serkancay.marketim.ui.orders.IOrdersPresenter;
+import com.serkancay.marketim.ui.orders.OrdersPresenter;
+import com.serkancay.marketim.ui.orders.OrdersView;
 import com.serkancay.marketim.ui.splash.ISplashPresenter;
 import com.serkancay.marketim.ui.splash.SplashPresenter;
 import com.serkancay.marketim.ui.splash.SplashView;
@@ -51,6 +54,12 @@ public class ActivityModule {
 
     @Provides
     public ILoginPresenter<LoginView> provideLoginPresenter(LoginPresenter<LoginView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    public IOrdersPresenter<OrdersView> provideOrdersPresenter(OrdersPresenter<OrdersView> presenter) {
         return presenter;
     }
 

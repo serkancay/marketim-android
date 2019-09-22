@@ -3,6 +3,7 @@ package com.serkancay.marketim.di.component;
 import com.serkancay.marketim.di.PerActivity;
 import com.serkancay.marketim.di.module.ActivityModule;
 import com.serkancay.marketim.ui.login.LoginActivity;
+import com.serkancay.marketim.ui.orders.OrdersActivity;
 import com.serkancay.marketim.ui.splash.SplashActivity;
 import dagger.Component;
 
@@ -17,5 +18,7 @@ public interface ActivityComponent {
     void inject(LoginActivity activity);
 
     void inject(SplashActivity activity);
+
+    void inject(OrdersActivity activity);
 
 }
