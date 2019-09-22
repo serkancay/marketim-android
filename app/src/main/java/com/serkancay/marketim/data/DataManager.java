@@ -2,9 +2,11 @@ package com.serkancay.marketim.data;
 
 import android.content.Context;
 import com.serkancay.marketim.data.network.IApiHelper;
+import com.serkancay.marketim.data.network.model.response.OrdersResponse;
 import com.serkancay.marketim.data.preferences.IPreferencesHelper;
 import com.serkancay.marketim.di.ApplicationContext;
 import com.serkancay.marketim.util.keystore.CryptorUtil;
+import io.reactivex.Single;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
@@ -22,7 +24,8 @@ public class DataManager implements IDataManager {
     private final IApiHelper mApiHelper;
 
     @Inject
-    public DataManager(@ApplicationContext Context context, IPreferencesHelper preferencesHelper, IApiHelper apiHelper) {
+    public DataManager(@ApplicationContext Context context, IPreferencesHelper preferencesHelper,
+            IApiHelper apiHelper) {
         mContext = context;
         mPreferencesHelper = preferencesHelper;
         mApiHelper = apiHelper;
@@ -70,4 +73,8 @@ public class DataManager implements IDataManager {
         return mPreferencesHelper.isRememberMeOn();
     }
 
+    @Override
+    public Single<OrdersResponse> getOrdersApiCall() {
+        return mApiHelper.getOrdersApiCall();
+    }
 }
