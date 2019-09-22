@@ -1,6 +1,7 @@
 package com.serkancay.marketim.data;
 
 import android.content.Context;
+import com.serkancay.marketim.data.network.IApiHelper;
 import com.serkancay.marketim.data.preferences.IPreferencesHelper;
 import com.serkancay.marketim.di.ApplicationContext;
 import com.serkancay.marketim.util.keystore.CryptorUtil;
@@ -18,10 +19,13 @@ public class DataManager implements IDataManager {
 
     private final IPreferencesHelper mPreferencesHelper;
 
+    private final IApiHelper mApiHelper;
+
     @Inject
-    public DataManager(@ApplicationContext Context context, IPreferencesHelper preferencesHelper) {
+    public DataManager(@ApplicationContext Context context, IPreferencesHelper preferencesHelper, IApiHelper apiHelper) {
         mContext = context;
         mPreferencesHelper = preferencesHelper;
+        mApiHelper = apiHelper;
     }
 
     /**

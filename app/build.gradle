@@ -11,6 +11,7 @@ android {
     }
     buildTypes {
         debug {
+            buildConfigField("String", "BASE_URL", "\"http://kariyertechchallenge.mockable.io/\"")
             buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
             buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
             buildConfigField("String", "ALIAS", "\"marketim20192\"")
@@ -21,6 +22,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://kariyertechchallenge.mockable.io/\"")
             buildConfigField("String", "DEFAULT_USERNAME", "\"kariyer\"")
             buildConfigField("String", "DEFAULT_PASSWORD", "\"2019ADev\"")
             buildConfigField("String", "ALIAS", "\"marketim20192\"")

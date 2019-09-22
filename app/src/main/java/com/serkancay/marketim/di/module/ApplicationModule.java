@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.serkancay.marketim.data.DataManager;
 import com.serkancay.marketim.data.IDataManager;
+import com.serkancay.marketim.data.network.ApiHelper;
+import com.serkancay.marketim.data.network.IApiHelper;
 import com.serkancay.marketim.data.preferences.IPreferencesHelper;
 import com.serkancay.marketim.data.preferences.PreferencesHelper;
 import com.serkancay.marketim.di.ApplicationContext;
@@ -47,4 +49,9 @@ public class ApplicationModule {
         return preferencesHelper;
     }
 
+    @Provides
+    @Singleton
+    IApiHelper provideApiHelper(ApiHelper apiHelper) {
+        return apiHelper;
+    }
 }
